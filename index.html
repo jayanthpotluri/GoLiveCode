@@ -4,31 +4,22 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="main.css">
-    
     <title>GoLiveCode</title>
+    <link rel="stylesheet" href="index.css">
 </head>
 <body>
-    <div id="videos">
-        <video class="video-player" id="user-1" autoplay playsinline src=""></video>
-        <video class="video-player" id="user-2" autoplay playsinline src=""></video>
-    </div>
-
-    <div id="controls">
-        <div class="control-container" id="camera-btn">
-            <img src="icons/camera.png"/>
-        </div>
-        <div class="control-container" id="mic-btn">
-            <img src="icons/mic.png"/>
-        </div>
-        <a href="lobby.html">
-            <div class="control-container" id="leave-btn">
-                <img src="icons/phone.png"/>
-            </div>
-        </a>
-    </div>
-    
+    <form id="join-form">
+        <input type="text" name="invite_link" required/>
+        <input type="submit" value="Join Room"/>
+    </form>
 </body>
-<script src="agora-rtm-sdk-1.5.1.js"></script>
-<script src="main.js"></script>
+<script>
+    let form = document.getElementById('join-form')
+
+    form.addEventListener('submit', (e) => {
+        e.preventDefault()
+        let inviteCode = e.target.invite_link.value
+        window.location = `lobby.html?room=${inviteCode}`
+    })
+</script>
 </html>

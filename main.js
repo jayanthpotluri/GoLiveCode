@@ -19,7 +19,7 @@ let urlParams = new URLSearchParams(queryString)
 let roomId = urlParams.get('room')
 
 if(!roomId){
-    window.location = 'lobby.html'
+    window.location = 'index.html'
 }
 
 let localStream; //local user
@@ -85,7 +85,7 @@ let createPeerConnection = async (MemberId) => {
     document.getElementById('user-2').style.display = 'block'
 
     if(!localStream){ 
-        localStream = await navigator.mediaDevices.getUserMedia({video:true, audio:false}) //incase localStream doesnt work
+        localStream = await navigator.mediaDevices.getUserMedia({video:true, audio:true}) //incase localStream doesnt work
         document.getElementById('user-1').srcObject = localStream
     }
 
